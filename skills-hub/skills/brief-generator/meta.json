@@ -1,0 +1,19 @@
+{
+  "name": "Brief Generator",
+  "description": "Generates complete, session-ready UX/product design briefs from raw input — especially voice notes and transcripts.",
+  "author": "sanrivero",
+  "category": "Product Design",
+  "tags": [
+    "ux",
+    "brief",
+    "voice-notes",
+    "product-design",
+    "mercadopago"
+  ],
+  "platform": [
+    "claude-code"
+  ],
+  "requires": [],
+  "version": "1.0.0",
+  "createdAt": "2026-02-20"
+}
