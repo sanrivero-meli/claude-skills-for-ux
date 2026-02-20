@@ -4,17 +4,16 @@ import { useState } from "react";
 import { Check, Copy } from "lucide-react";
 
 export function InstallSnippet({
-  slug,
-  orgRepo,
+  installPrompt,
 }: {
-  slug: string;
-  orgRepo: string;
+  installPrompt: string;
 }) {
   const [copied, setCopied] = useState(false);
-  const cmd = `git clone https://github.com/${orgRepo} /tmp/skills-hub && cp -r /tmp/skills-hub/skills/${slug} .claude/skills/${slug}`;
+
+  if (!installPrompt.trim()) return null;
 
   const copy = () => {
-    navigator.clipboard.writeText(cmd);
+    navigator.clipboard.writeText(installPrompt);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
@@ -24,16 +23,22 @@ export function InstallSnippet({
       <p className="text-xs text-zinc-500 uppercase tracking-widest mb-3">
         Install
       </p>
-      <div className="flex items-start gap-3">
-        <code className="text-xs text-zinc-300 font-mono leading-relaxed flex-1 break-all">
-          {cmd}
-        </code>
+
+      <p className="text-xs text-zinc-400 mb-2">
+        Copy and paste into Claude to install
+      </p>
+
+      <div className="relative rounded-lg bg-zinc-950 border border-zinc-800 p-3">
         <button
           onClick={copy}
-          className="shrink-0 text-zinc-500 hover:text-zinc-200 transition-colors mt-0.5"
+          className="absolute top-2 right-2 text-zinc-500 hover:text-zinc-200 transition-colors"
+          aria-label="Copy install prompt"
         >
           {copied ? <Check size={14} /> : <Copy size={14} />}
         </button>
+        <pre className="text-xs text-zinc-300 font-mono leading-relaxed whitespace-pre-wrap max-h-64 overflow-y-auto pr-6">
+          {installPrompt}
+        </pre>
       </div>
     </div>
   );

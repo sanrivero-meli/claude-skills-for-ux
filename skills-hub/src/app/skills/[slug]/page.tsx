@@ -46,8 +46,7 @@ export default async function SkillPage({
         {/* Install */}
         <div className="mt-8">
           <InstallSnippet
-            slug={skill.slug}
-            orgRepo="sanrivero_meli/ux-claude-skills-library"
+            installPrompt={skill.installPrompt}
           />
         </div>
       </div>

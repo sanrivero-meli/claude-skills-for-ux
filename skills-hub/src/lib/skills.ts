@@ -16,9 +16,24 @@ export type Skill = {
   createdAt: string;
   readme: string;
   skillMd: string;
+  installPrompt: string;
 };
 
 const SKILLS_DIR = path.join(process.cwd(), "skills");
+
+function buildInstallPrompt(
+  slug: string,
+  files: { name: string; content: string }[]
+): string {
+  const fileBlocks = files
+    .map(
+      (f) =>
+        `--- File: .claude/skills/${slug}/${f.name} ---\n${f.content}`
+    )
+    .join("\n\n");
+
+  return `Please install this Claude Code skill by creating the following files:\n\n${fileBlocks}`;
+}
 
 export function getAllSkills(): Skill[] {
   const slugs = fs.readdirSync(SKILLS_DIR).filter((f) =>
@@ -46,7 +61,19 @@ export function getAllSkills(): Skill[] {
         ? fs.readFileSync(skillPath, "utf-8")
         : "";
 
-      return { slug, ...meta, readme, skillMd } as Skill;
+      // Read all .md files (except README.md) to build install prompt
+      const allFiles = fs.readdirSync(dir);
+      const skillFiles = allFiles
+        .filter((f) => f.endsWith(".md") && f !== "README.md")
+        .sort((a, b) => (a === "SKILL.md" ? -1 : b === "SKILL.md" ? 1 : a.localeCompare(b)))
+        .map((f) => ({
+          name: f,
+          content: fs.readFileSync(path.join(dir, f), "utf-8"),
+        }));
+
+      const installPrompt = buildInstallPrompt(slug, skillFiles);
+
+      return { slug, ...meta, readme, skillMd, installPrompt } as Skill;
     })
     .filter(Boolean) as Skill[];
 }
