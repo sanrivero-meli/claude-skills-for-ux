@@ -1,0 +1,20 @@
+{
+  "name": "Use Case Mapper",
+  "description": "Maps any feature into happy, error, and edge cases. Creates flowchart in Figjam.",
+  "author": "sanrivero",
+  "category": "Product Design",
+  "tags": [
+    "ux",
+    "figjam",
+    "mcp",
+    "flows"
+  ],
+  "platform": [
+    "claude-code"
+  ],
+  "requires": [
+    "figma-mcp"
+  ],
+  "version": "1.0.0",
+  "createdAt": "2025-02-19"
+}

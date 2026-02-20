@@ -1,0 +1,18 @@
+{
+  "name": "Rapid Prototype",
+  "description": "Generates fast React prototypes to validate concepts, ideas, flows, interactions.",
+  "author": "sanrivero",
+  "category": "Visual Design",
+  "tags": [
+    "react",
+    "shadcn",
+    "prototype",
+    "frontend"
+  ],
+  "platform": [
+    "claude-code"
+  ],
+  "requires": [],
+  "version": "1.0.0",
+  "createdAt": "2025-02-19"
+}

@@ -1,0 +1,13 @@
+{
+  "name": "Mercado Pago Voice",
+  "description": "Write and review content following Mercado Pago's brand voice. UX copy, marketing, CX.",
+  "author": "sanrivero",
+  "category": "Content ",
+  "tags": [],
+  "platform": [
+    "claude-code"
+  ],
+  "requires": [],
+  "version": "1.0.0",
+  "createdAt": "2025-02-19"
+}
