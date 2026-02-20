@@ -20,28 +20,35 @@ export async function PUT(
     return NextResponse.json({ error: "Skill not found" }, { status: 404 });
   }
 
-  const currentMeta = JSON.parse(fs.readFileSync(metaPath, "utf-8"));
-  const updates = await request.json();
+  try {
+    const currentMeta = JSON.parse(fs.readFileSync(metaPath, "utf-8"));
+    const updates = await request.json();
 
-  const allowedFields = [
-    "name",
-    "description",
-    "author",
-    "category",
-    "tags",
-    "platform",
-    "requires",
-    "version",
-  ];
+    const allowedFields = [
+      "name",
+      "description",
+      "author",
+      "category",
+      "tags",
+      "platform",
+      "requires",
+      "version",
+    ];
 
-  const newMeta = { ...currentMeta };
-  for (const field of allowedFields) {
-    if (field in updates) {
-      newMeta[field] = updates[field];
+    const newMeta = { ...currentMeta };
+    for (const field of allowedFields) {
+      if (field in updates) {
+        newMeta[field] = updates[field];
+      }
     }
+
+    fs.writeFileSync(metaPath, JSON.stringify(newMeta, null, 2) + "\n");
+
+    return NextResponse.json({ ok: true, meta: newMeta });
+  } catch {
+    return NextResponse.json(
+      { error: "Cannot save — filesystem is read-only in production. Edit meta.json in the repo instead." },
+      { status: 500 }
+    );
   }
-
-  fs.writeFileSync(metaPath, JSON.stringify(newMeta, null, 2) + "\n");
-
-  return NextResponse.json({ ok: true, meta: newMeta });
 }

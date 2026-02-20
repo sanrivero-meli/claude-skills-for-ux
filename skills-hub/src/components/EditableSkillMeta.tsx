@@ -69,8 +69,10 @@ export function EditableSkillMeta({ skill }: { skill: Skill }) {
         body: JSON.stringify(draft),
       });
       if (!res.ok) {
-        const data = await res.json();
-        throw new Error(data.error || "Save failed");
+        const text = await res.text();
+        let message = "Save failed";
+        try { message = JSON.parse(text).error || message; } catch {}
+        throw new Error(message);
       }
       const data = await res.json();
       setCurrent(cloneFields(data.meta));
