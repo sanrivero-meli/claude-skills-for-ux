@@ -51,7 +51,7 @@ export default async function ContributePage() {
           dangerouslySetInnerHTML={{ __html: html }}
         />
         <a
-          href="https://meli.enterprise.slack.com/team/U01M372LMRA"
+          href="https://meli.enterprise.slack.com/messages/U01M372LMRA"
           target="_blank"
           className="mt-10 inline-flex items-center gap-2 border border-zinc-700 text-zinc-300 px-5 py-2.5 rounded-md text-sm font-medium hover:bg-zinc-800 transition-colors"
         >
