@@ -25,10 +25,10 @@ type SkillMeta = Omit<Skill, "slug" | "readme" | "skillMd" | "installPrompt">;
 const SKILLS_DIR = path.join(process.cwd(), "skills");
 
 function getKv() {
-  if (!process.env.UPSTASH_REDIS_REST_URL || !process.env.UPSTASH_REDIS_REST_TOKEN) {
-    return null;
-  }
-  return Redis.fromEnv();
+  const url = process.env.KV_REST_API_URL;
+  const token = process.env.KV_REST_API_TOKEN;
+  if (!url || !token) return null;
+  return new Redis({ url, token });
 }
 
 function buildInstallPrompt(

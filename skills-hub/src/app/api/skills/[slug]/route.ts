@@ -6,10 +6,10 @@ import { Redis } from "@upstash/redis";
 const SKILLS_DIR = path.join(process.cwd(), "skills");
 
 function getKv() {
-  if (!process.env.UPSTASH_REDIS_REST_URL || !process.env.UPSTASH_REDIS_REST_TOKEN) {
-    return null;
-  }
-  return Redis.fromEnv();
+  const url = process.env.KV_REST_API_URL;
+  const token = process.env.KV_REST_API_TOKEN;
+  if (!url || !token) return null;
+  return new Redis({ url, token });
 }
 
 export async function PUT(
@@ -55,7 +55,7 @@ export async function PUT(
       await kv.set(`skill:${slug}:meta`, newMeta);
     } else {
       return NextResponse.json(
-        { error: "Redis not configured — set UPSTASH_REDIS_REST_URL and UPSTASH_REDIS_REST_TOKEN" },
+        { error: "Redis not configured — connect KV store in Vercel dashboard" },
         { status: 500 }
       );
     }
