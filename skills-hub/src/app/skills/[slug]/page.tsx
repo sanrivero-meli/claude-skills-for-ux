@@ -8,7 +8,8 @@ import { ReadmeSections } from "@/components/ReadmeSections";
 import { ArrowLeft } from "lucide-react";
 
 export async function generateStaticParams() {
-  return getAllSkills().map((s) => ({ slug: s.slug }));
+  const skills = await getAllSkills();
+  return skills.map((s) => ({ slug: s.slug }));
 }
 
 export default async function SkillPage({
@@ -17,7 +18,7 @@ export default async function SkillPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const skill = getSkillBySlug(slug);
+  const skill = await getSkillBySlug(slug);
   if (!skill) notFound();
 
   const sections = skill.readme

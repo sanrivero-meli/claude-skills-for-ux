@@ -2,6 +2,7 @@ import fs from "fs";
 import path from "path";
 import { remark } from "remark";
 import remarkHtml from "remark-html";
+import { Redis } from "@upstash/redis";
 
 export type Skill = {
   slug: string;
@@ -19,7 +20,16 @@ export type Skill = {
   installPrompt: string;
 };
 
+type SkillMeta = Omit<Skill, "slug" | "readme" | "skillMd" | "installPrompt">;
+
 const SKILLS_DIR = path.join(process.cwd(), "skills");
+
+function getKv() {
+  if (!process.env.UPSTASH_REDIS_REST_URL || !process.env.UPSTASH_REDIS_REST_TOKEN) {
+    return null;
+  }
+  return Redis.fromEnv();
+}
 
 function buildInstallPrompt(
   slug: string,
@@ -35,33 +45,48 @@ function buildInstallPrompt(
   return `Please install this Claude Code skill by creating the following files:\n\n${fileBlocks}`;
 }
 
-export function getAllSkills(): Skill[] {
+export async function getAllSkills(): Promise<Skill[]> {
   const slugs = fs.readdirSync(SKILLS_DIR).filter((f) =>
     fs.statSync(path.join(SKILLS_DIR, f)).isDirectory()
   );
+
+  // Batch-fetch all KV overrides
+  const kv = getKv();
+  const overrides = new Map<string, Partial<SkillMeta>>();
+  if (kv) {
+    try {
+      const keys = slugs.map((s) => `skill:${s}:meta`);
+      const values = await kv.mget<(Partial<SkillMeta> | null)[]>(...keys);
+      slugs.forEach((slug, i) => {
+        if (values[i]) overrides.set(slug, values[i]);
+      });
+    } catch {
+      // KV unavailable — fall back to filesystem only
+    }
+  }
 
   return slugs
     .map((slug) => {
       const dir = path.join(SKILLS_DIR, slug);
 
-      // Read meta.json
       const metaPath = path.join(dir, "meta.json");
       if (!fs.existsSync(metaPath)) return null;
       const meta = JSON.parse(fs.readFileSync(metaPath, "utf-8"));
 
-      // Read README.md
+      // Merge KV overrides on top of filesystem meta
+      const kvMeta = overrides.get(slug);
+      const merged = kvMeta ? { ...meta, ...kvMeta } : meta;
+
       const readmePath = path.join(dir, "README.md");
       const readme = fs.existsSync(readmePath)
         ? fs.readFileSync(readmePath, "utf-8")
         : "";
 
-      // Read SKILL.md
       const skillPath = path.join(dir, "SKILL.md");
       const skillMd = fs.existsSync(skillPath)
         ? fs.readFileSync(skillPath, "utf-8")
         : "";
 
-      // Read all .md files (except README.md) to build install prompt
       const allFiles = fs.readdirSync(dir);
       const skillFiles = allFiles
         .filter((f) => f.endsWith(".md") && f !== "README.md")
@@ -73,28 +98,28 @@ export function getAllSkills(): Skill[] {
 
       const installPrompt = buildInstallPrompt(slug, skillFiles);
 
-      return { slug, ...meta, readme, skillMd, installPrompt } as Skill;
+      return { slug, ...merged, readme, skillMd, installPrompt } as Skill;
     })
     .filter(Boolean) as Skill[];
 }
 
-export function getSkillBySlug(slug: string): Skill | null {
-  const skills = getAllSkills();
+export async function getSkillBySlug(slug: string): Promise<Skill | null> {
+  const skills = await getAllSkills();
   return skills.find((s) => s.slug === slug) ?? null;
 }
 
-export function getAllCategories(): string[] {
-  const skills = getAllSkills();
+export async function getAllCategories(): Promise<string[]> {
+  const skills = await getAllSkills();
   return [...new Set(skills.map((s) => s.category))].sort();
 }
 
-export function getAllTags(): string[] {
-  const skills = getAllSkills();
+export async function getAllTags(): Promise<string[]> {
+  const skills = await getAllSkills();
   return [...new Set(skills.flatMap((s) => s.tags))].sort();
 }
 
-export function getContributorCount(): number {
-  const skills = getAllSkills();
+export async function getContributorCount(): Promise<number> {
+  const skills = await getAllSkills();
   return new Set(skills.map((s) => s.author)).size;
 }
 
@@ -127,7 +152,6 @@ export async function parseReadmeSections(
     } else if (currentTitle) {
       currentLines.push(line);
     }
-    // Skip lines before the first ## heading (e.g. the # title)
   }
 
   if (currentTitle) {

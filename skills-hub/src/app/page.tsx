@@ -1,10 +1,10 @@
 import { getAllSkills, getAllCategories, getContributorCount } from "@/lib/skills";
 import { SkillGrid } from "@/components/SkillGrid";
 
-export default function Home() {
-  const skills = getAllSkills();
-  const categories = getAllCategories();
-  const contributors = getContributorCount();
+export default async function Home() {
+  const skills = await getAllSkills();
+  const categories = await getAllCategories();
+  const contributors = await getContributorCount();
 
   return (
     <main className="min-h-screen bg-zinc-950 text-zinc-50">
