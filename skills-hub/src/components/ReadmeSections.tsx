@@ -3,9 +3,11 @@
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import type { ReadmeSection } from "@/lib/skills";
+import { useTranslation } from "@/i18n/context";
 
 export function ReadmeSections({ sections }: { sections: ReadmeSection[] }) {
   const [expanded, setExpanded] = useState(false);
+  const { t } = useTranslation();
 
   if (sections.length === 0) return null;
 
@@ -19,7 +21,7 @@ export function ReadmeSections({ sections }: { sections: ReadmeSection[] }) {
           size={14}
           className={`transition-transform ${expanded ? "rotate-180" : ""}`}
         />
-        {expanded ? "Show less" : "Read more"}
+        {expanded ? t("readme.showLess") : t("readme.readMore")}
       </button>
 
       {expanded && (

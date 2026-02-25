@@ -4,8 +4,10 @@ import { useState, useRef, useEffect } from "react";
 import { Skill } from "@/lib/skills";
 import { SkillCard } from "./SkillCard";
 import { Input } from "@/components/ui/input";
-import { Search, Plus } from "lucide-react";
-import Link from "next/link";
+import { Search } from "lucide-react";
+import { useTranslation } from "@/i18n/context";
+import { slugifyCategory } from "@/i18n/utils";
+import type { TranslationKey } from "@/i18n/types";
 
 export function SkillGrid({
   skills,
@@ -14,6 +16,7 @@ export function SkillGrid({
   skills: Skill[];
   categories: string[];
 }) {
+  const { t, tContent } = useTranslation();
   const [query, setQuery] = useState("");
   const [searchOpen, setSearchOpen] = useState(false);
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
@@ -46,10 +49,15 @@ export function SkillGrid({
   };
 
   const filtered = skills.filter((s) => {
+    const translatedName = tContent(`skill.${s.slug}.name` as TranslationKey, s.name);
+    const translatedDesc = tContent(`skill.${s.slug}.description` as TranslationKey, s.description);
+    const q = query.toLowerCase();
     const matchesQuery =
       !query ||
-      s.name.toLowerCase().includes(query.toLowerCase()) ||
-      s.description.toLowerCase().includes(query.toLowerCase());
+      s.name.toLowerCase().includes(q) ||
+      s.description.toLowerCase().includes(q) ||
+      translatedName.toLowerCase().includes(q) ||
+      translatedDesc.toLowerCase().includes(q);
     const matchesCategory =
       !activeCategory || s.category === activeCategory;
     return matchesQuery && matchesCategory;
@@ -67,7 +75,7 @@ export function SkillGrid({
               : "border-zinc-700 text-zinc-500 hover:border-zinc-500"
           }`}
         >
-          All
+          {t("grid.all")}
         </button>
         {categories.map((cat) => (
           <button
@@ -81,7 +89,7 @@ export function SkillGrid({
                 : "border-zinc-700 text-zinc-500 hover:border-zinc-500"
             }`}
           >
-            {cat}
+            {tContent(`category.${slugifyCategory(cat)}` as TranslationKey, cat)}
           </button>
         ))}
 
@@ -100,7 +108,7 @@ export function SkillGrid({
           {searchOpen && (
             <Input
               ref={inputRef}
-              placeholder="Search skills..."
+              placeholder={t("grid.searchPlaceholder")}
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               className="h-7 text-xs w-48"
@@ -112,7 +120,7 @@ export function SkillGrid({
 
       {/* Results */}
       {filtered.length === 0 ? (
-        <p className="text-zinc-500 text-sm">No skills match your search.</p>
+        <p className="text-zinc-500 text-sm">{t("grid.noResults")}</p>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {filtered.map((skill) => (
@@ -121,14 +129,6 @@ export function SkillGrid({
         </div>
       )}
 
-      {/* Add skill */}
-      <Link
-        href="/contribute"
-        className="mt-4 flex items-center gap-2 text-sm text-zinc-600 hover:text-zinc-400 transition-colors py-3"
-      >
-        <Plus size={14} />
-        Add a skill
-      </Link>
     </div>
   );
 }

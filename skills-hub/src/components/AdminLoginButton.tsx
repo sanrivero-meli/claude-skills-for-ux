@@ -5,9 +5,11 @@ import { useAdmin } from "@/components/AdminProvider";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Lock, LogOut } from "lucide-react";
+import { useTranslation } from "@/i18n/context";
 
 export function AdminLoginButton() {
   const { isAdmin, login, logout } = useAdmin();
+  const { t } = useTranslation();
   const [showPrompt, setShowPrompt] = useState(false);
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
@@ -33,7 +35,7 @@ export function AdminLoginButton() {
         className="text-zinc-600 hover:text-zinc-400"
       >
         <LogOut size={12} />
-        Admin
+        {t("auth.admin")}
       </Button>
     );
   }
@@ -43,14 +45,14 @@ export function AdminLoginButton() {
       <form onSubmit={handleSubmit} className="flex items-center gap-2">
         <Input
           type="password"
-          placeholder="Admin password"
+          placeholder={t("auth.passwordPlaceholder")}
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           className="h-7 w-40 text-xs"
           autoFocus
         />
         <Button type="submit" size="xs" variant="secondary">
-          Enter
+          {t("auth.enter")}
         </Button>
         <Button
           type="button"
@@ -61,10 +63,10 @@ export function AdminLoginButton() {
             setError(false);
           }}
         >
-          Cancel
+          {t("auth.cancel")}
         </Button>
         {error && (
-          <span className="text-red-400 text-xs">Wrong password</span>
+          <span className="text-red-400 text-xs">{t("auth.wrongPassword")}</span>
         )}
       </form>
     );

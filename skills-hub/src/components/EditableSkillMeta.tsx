@@ -7,6 +7,9 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Pencil, Save, X, Plus, Trash2 } from "lucide-react";
 import type { Skill } from "@/lib/skills";
+import { useTranslation } from "@/i18n/context";
+import { slugifyCategory } from "@/i18n/utils";
+import type { TranslationKey } from "@/i18n/types";
 
 type EditableFields = Pick<
   Skill,
@@ -35,6 +38,7 @@ function cloneFields(source: EditableFields): EditableFields {
 
 export function EditableSkillMeta({ skill }: { skill: Skill }) {
   const { isAdmin, token } = useAdmin();
+  const { t, tContent } = useTranslation();
   const [isEditing, setIsEditing] = useState(false);
   const [current, setCurrent] = useState<EditableFields>(() =>
     cloneFields(skill)
@@ -70,7 +74,7 @@ export function EditableSkillMeta({ skill }: { skill: Skill }) {
       });
       if (!res.ok) {
         const text = await res.text();
-        let message = "Save failed";
+        let message = t("meta.saveFailed");
         try { message = JSON.parse(text).error || message; } catch {}
         throw new Error(message);
       }
@@ -78,7 +82,7 @@ export function EditableSkillMeta({ skill }: { skill: Skill }) {
       setCurrent(cloneFields(data.meta));
       setIsEditing(false);
     } catch (err: unknown) {
-      setError(err instanceof Error ? err.message : "Save failed");
+      setError(err instanceof Error ? err.message : t("meta.saveFailed"));
     } finally {
       setSaving(false);
     }
@@ -114,7 +118,7 @@ export function EditableSkillMeta({ skill }: { skill: Skill }) {
     return (
       <div className="mb-8 space-y-4">
         <div>
-          <label className="text-xs text-zinc-500 block mb-1">Name</label>
+          <label className="text-xs text-zinc-500 block mb-1">{t("meta.labelName")}</label>
           <Input
             value={draft.name}
             onChange={(e) => updateField("name", e.target.value)}
@@ -124,7 +128,7 @@ export function EditableSkillMeta({ skill }: { skill: Skill }) {
 
         <div>
           <div className="flex items-center justify-between mb-1">
-            <label className="text-xs text-zinc-500">Description</label>
+            <label className="text-xs text-zinc-500">{t("meta.labelDescription")}</label>
             <span
               className={`text-xs ${draft.description.length > 100 ? "text-red-400" : "text-zinc-600"}`}
             >
@@ -142,7 +146,7 @@ export function EditableSkillMeta({ skill }: { skill: Skill }) {
 
         <div className="grid grid-cols-2 gap-4">
           <div>
-            <label className="text-xs text-zinc-500 block mb-1">Author</label>
+            <label className="text-xs text-zinc-500 block mb-1">{t("meta.labelAuthor")}</label>
             <Input
               value={draft.author}
               onChange={(e) => updateField("author", e.target.value)}
@@ -150,7 +154,7 @@ export function EditableSkillMeta({ skill }: { skill: Skill }) {
           </div>
           <div>
             <label className="text-xs text-zinc-500 block mb-1">
-              Category
+              {t("meta.labelCategory")}
             </label>
             <Input
               value={draft.category}
@@ -160,7 +164,7 @@ export function EditableSkillMeta({ skill }: { skill: Skill }) {
         </div>
 
         <div>
-          <label className="text-xs text-zinc-500 block mb-1">Version</label>
+          <label className="text-xs text-zinc-500 block mb-1">{t("meta.labelVersion")}</label>
           <Input
             value={draft.version}
             onChange={(e) => updateField("version", e.target.value)}
@@ -169,14 +173,16 @@ export function EditableSkillMeta({ skill }: { skill: Skill }) {
         </div>
 
         <ArrayEditor
-          label="Platform"
+          label={t("meta.labelPlatform")}
+          placeholder={t("meta.addPlaceholder", { field: t("meta.labelPlatform").toLowerCase() })}
           items={draft.platform}
           onAdd={(v) => addToArray("platform", v)}
           onRemove={(i) => removeFromArray("platform", i)}
         />
 
         <ArrayEditor
-          label="Requires"
+          label={t("meta.labelRequires")}
+          placeholder={t("meta.addPlaceholder", { field: t("meta.labelRequires").toLowerCase() })}
           items={draft.requires}
           onAdd={(v) => addToArray("requires", v)}
           onRemove={(i) => removeFromArray("requires", i)}
@@ -185,11 +191,11 @@ export function EditableSkillMeta({ skill }: { skill: Skill }) {
         <div className="flex items-center gap-2 pt-2">
           <Button onClick={save} disabled={saving} size="sm">
             <Save size={14} />
-            {saving ? "Saving..." : "Save"}
+            {saving ? t("meta.saving") : t("meta.save")}
           </Button>
           <Button onClick={cancel} variant="ghost" size="sm" disabled={saving}>
             <X size={14} />
-            Cancel
+            {t("meta.cancel")}
           </Button>
           {error && <span className="text-red-400 text-xs">{error}</span>}
         </div>
@@ -198,16 +204,20 @@ export function EditableSkillMeta({ skill }: { skill: Skill }) {
   }
 
   // --- READ MODE ---
+  const displayName = tContent(`skill.${skill.slug}.name` as TranslationKey, current.name);
+  const displayDescription = tContent(`skill.${skill.slug}.description` as TranslationKey, current.description);
+  const displayCategory = tContent(`category.${slugifyCategory(current.category)}` as TranslationKey, current.category);
+
   return (
     <div className="mb-8">
       <div className="flex items-center gap-2 mb-3">
-        <Badge variant="secondary">{current.category}</Badge>
+        <Badge variant="secondary">{displayCategory}</Badge>
       </div>
       <div className="flex items-start justify-between">
         <div>
-          <h1 className="text-3xl font-semibold mb-2">{current.name}</h1>
-          <p className="text-zinc-400">{current.description}</p>
-          <p className="text-zinc-600 text-sm mt-2">by {current.author}</p>
+          <h1 className="text-3xl font-semibold mb-2">{displayName}</h1>
+          <p className="text-zinc-400">{displayDescription}</p>
+          <p className="text-zinc-600 text-sm mt-2">{t("meta.byAuthor", { author: current.author })}</p>
         </div>
         {isAdmin && (
           <Button
@@ -226,11 +236,13 @@ export function EditableSkillMeta({ skill }: { skill: Skill }) {
 
 function ArrayEditor({
   label,
+  placeholder,
   items,
   onAdd,
   onRemove,
 }: {
   label: string;
+  placeholder: string;
   items: string[];
   onAdd: (value: string) => void;
   onRemove: (index: number) => void;
@@ -273,7 +285,7 @@ function ArrayEditor({
           value={newItem}
           onChange={(e) => setNewItem(e.target.value)}
           onKeyDown={handleKeyDown}
-          placeholder={`Add ${label.toLowerCase()}...`}
+          placeholder={placeholder}
           className="h-7 text-xs max-w-48"
         />
         <Button type="button" variant="ghost" size="xs" onClick={handleAdd}>

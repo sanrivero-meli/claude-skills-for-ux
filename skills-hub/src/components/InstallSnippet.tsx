@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Check, Copy } from "lucide-react";
+import { useTranslation } from "@/i18n/context";
 
 export function InstallSnippet({
   installPrompt,
@@ -9,6 +10,7 @@ export function InstallSnippet({
   installPrompt: string;
 }) {
   const [copied, setCopied] = useState(false);
+  const { t } = useTranslation();
 
   if (!installPrompt.trim()) return null;
 
@@ -21,18 +23,18 @@ export function InstallSnippet({
   return (
     <div className="rounded-xl border border-zinc-800 bg-zinc-900 p-4">
       <p className="text-xs text-zinc-500 uppercase tracking-widest mb-3">
-        Install
+        {t("install.heading")}
       </p>
 
       <p className="text-xs text-zinc-400 mb-2">
-        Copy and paste into Claude to install
+        {t("install.instruction")}
       </p>
 
       <div className="relative rounded-lg bg-zinc-950 border border-zinc-800 p-3">
         <button
           onClick={copy}
           className="absolute top-2 right-2 text-zinc-500 hover:text-zinc-200 transition-colors"
-          aria-label="Copy install prompt"
+          aria-label={t("install.copyAriaLabel")}
         >
           {copied ? <Check size={14} /> : <Copy size={14} />}
         </button>

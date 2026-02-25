@@ -1,11 +1,10 @@
-import Link from "next/link";
 import { getAllSkills, getSkillBySlug, parseReadmeSections } from "@/lib/skills";
 import { notFound } from "next/navigation";
 import { InstallSnippet } from "@/components/InstallSnippet";
 import { EditableSkillMeta } from "@/components/EditableSkillMeta";
 import { AdminLoginButton } from "@/components/AdminLoginButton";
 import { ReadmeSections } from "@/components/ReadmeSections";
-import { ArrowLeft } from "lucide-react";
+import { BackLink } from "@/components/BackLink";
 
 export async function generateStaticParams() {
   const skills = await getAllSkills();
@@ -30,13 +29,7 @@ export default async function SkillPage({
       <div className="max-w-2xl mx-auto">
         {/* Top bar */}
         <div className="flex items-center justify-between mb-4">
-          <Link
-            href="/"
-            className="flex items-center gap-1.5 text-sm text-zinc-500 hover:text-zinc-300 transition-colors"
-          >
-            <ArrowLeft size={14} />
-            Back
-          </Link>
+          <BackLink />
           <AdminLoginButton />
         </div>
 

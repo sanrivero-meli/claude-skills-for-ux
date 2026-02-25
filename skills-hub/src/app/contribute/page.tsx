@@ -1,62 +1,60 @@
-import Link from "next/link";
-import { parseMarkdown } from "@/lib/skills";
-import { ArrowLeft } from "lucide-react";
+"use client";
 
-const requirements = `
-Your skill needs three files in a single folder:
+import { FileUploader } from "@/components/FileUploader";
+import { BackLink } from "@/components/BackLink";
+import { useTranslation } from "@/i18n/context";
 
-\`\`\`
-your-skill-name/
-├── SKILL.md      ← the actual skill instructions for Claude
-├── README.md     ← what it does, how to use it (shown on the site)
-└── meta.json     ← metadata for filtering and display
-\`\`\`
-
-## meta.json format
-
-\`\`\`json
-{
-  "name": "Your Skill Name",
-  "description": "One sentence. What it does and when to use it.",
-  "author": "your-github-handle",
-  "category": "design | engineering | writing | data | productivity | finance",
-  "tags": ["tag1", "tag2"],
-  "platform": ["claude-code"],
-  "requires": [],
-  "version": "1.0.0",
-  "createdAt": "YYYY-MM-DD"
-}
-\`\`\`
-`;
-
-export default async function ContributePage() {
-  const html = await parseMarkdown(requirements.trim());
+export default function ContributePage() {
+  const { t } = useTranslation();
 
   return (
     <main className="min-h-screen bg-zinc-950 text-zinc-50">
       <section className="px-6 pt-16 pb-24 max-w-3xl mx-auto">
-        <Link
-          href="/"
-          className="flex items-center gap-1.5 text-sm text-zinc-500 hover:text-zinc-300 transition-colors mb-10"
-        >
-          <ArrowLeft size={14} />
-          Back
-        </Link>
-        <h1 className="text-2xl font-semibold tracking-tight mb-2">Add a skill</h1>
-        <p className="text-zinc-400 mb-8">
-          Prepare your files, then message me to get them added.
+        <div className="mb-10">
+          <BackLink />
+        </div>
+
+        <h1 className="text-2xl font-semibold tracking-tight mb-2">
+          {t("contribute.title")}
+        </h1>
+        <p className="text-zinc-400 mb-10">
+          {t("contribute.description")}
         </p>
-        <div
-          className="prose prose-invert prose-zinc max-w-none"
-          dangerouslySetInnerHTML={{ __html: html }}
-        />
-        <a
-          href="https://meli.enterprise.slack.com/messages/U01M372LMRA"
-          target="_blank"
-          className="mt-10 inline-flex items-center gap-2 border border-zinc-700 text-zinc-300 px-5 py-2.5 rounded-md text-sm font-medium hover:bg-zinc-800 transition-colors"
-        >
-          Message me on Slack
-        </a>
+
+        {/* Format guide */}
+        <div className="mb-10">
+          <h2 className="text-sm font-medium text-zinc-300 mb-3">
+            {t("contribute.formatTitle")}
+          </h2>
+          <div className="bg-zinc-900 border border-zinc-800 rounded-lg p-4 font-mono text-sm text-zinc-400 overflow-auto">
+            <pre className="whitespace-pre-wrap">{`---
+name: your-skill-name
+description: >
+  One or two sentences describing what the skill
+  does and when to use it.
+---
+
+# Skill Title
+
+Your skill instructions go here. This is the
+content Claude will follow when the skill is
+activated.
+
+## Section
+
+Add as many sections as needed to structure
+your instructions.`}</pre>
+          </div>
+          <p className="text-xs text-zinc-600 mt-2">
+            {t("contribute.formatNote", {
+              nameField: "name",
+              descField: "description",
+            })}
+          </p>
+        </div>
+
+        {/* Uploader */}
+        <FileUploader />
       </section>
     </main>
   );
