@@ -86,5 +86,37 @@
 
   "category.product-design": "Dise\u00f1o de Producto",
   "category.visual-design": "Dise\u00f1o Visual",
-  "category.content": "Contenido"
+  "category.content": "Contenido",
+
+  "rating.curatorScore": "Curador",
+  "rating.userScore": "Usuario",
+  "rating.rateSkill": "Calificar esta skill",
+  "rating.noRatings": "Sin calificaciones a\u00fan",
+  "rating.review": "rese\u00f1a",
+  "rating.reviews": "rese\u00f1as",
+  "rating.name": "Nombre",
+  "rating.seniority": "Seniority",
+  "rating.selectSeniority": "Seleccionar seniority...",
+  "rating.score": "Calificaci\u00f3n",
+  "rating.submit": "Enviar",
+  "rating.submitting": "Enviando...",
+  "rating.success": "\u00a1Calificaci\u00f3n enviada!",
+  "rating.error": "Error al enviar calificaci\u00f3n",
+  "rating.comment": "Comentario",
+  "rating.optional": "opcional",
+  "rating.commentPlaceholder": "Comparte tu opini\u00f3n sobre esta skill...",
+
+  "seniority.junior": "Junior",
+  "seniority.semisenior": "Semisenior",
+  "seniority.senior": "Senior",
+  "seniority.lead": "Lead",
+  "seniority.manager": "Manager",
+  "seniority.expert": "Expert",
+  "seniority.technicallead": "Technical Lead",
+  "seniority.seniormanager": "Senior Manager",
+  "seniority.director": "Director",
+
+  "tier.gold": "Gold",
+  "tier.silver": "Silver",
+  "tier.bronze": "Bronze"
 }

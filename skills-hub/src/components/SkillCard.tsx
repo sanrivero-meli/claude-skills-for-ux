@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { Skill } from "@/lib/skills";
+import { RatingDisplay } from "@/components/RatingDisplay";
 import { useTranslation } from "@/i18n/context";
 import { slugifyCategory } from "@/i18n/utils";
 import type { TranslationKey } from "@/i18n/types";
@@ -29,6 +30,9 @@ export function SkillCard({ skill }: { skill: Skill }) {
             ? description.slice(0, 100).trimEnd() + "..."
             : description}
         </p>
+        {skill.ratings && (
+          <RatingDisplay ratings={skill.ratings} variant="compact" />
+        )}
       </div>
     </Link>
   );

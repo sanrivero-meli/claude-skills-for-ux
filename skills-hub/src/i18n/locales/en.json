@@ -86,5 +86,37 @@
 
   "category.product-design": "Product Design",
   "category.visual-design": "Visual Design",
-  "category.content": "Content"
+  "category.content": "Content",
+
+  "rating.curatorScore": "Curator",
+  "rating.userScore": "User",
+  "rating.rateSkill": "Rate this skill",
+  "rating.noRatings": "No ratings yet",
+  "rating.review": "review",
+  "rating.reviews": "reviews",
+  "rating.name": "Name",
+  "rating.seniority": "Seniority",
+  "rating.selectSeniority": "Select seniority...",
+  "rating.score": "Rating",
+  "rating.submit": "Submit",
+  "rating.submitting": "Submitting...",
+  "rating.success": "Rating submitted!",
+  "rating.error": "Failed to submit rating",
+  "rating.comment": "Comment",
+  "rating.optional": "optional",
+  "rating.commentPlaceholder": "Share your thoughts on this skill...",
+
+  "seniority.junior": "Junior",
+  "seniority.semisenior": "Semisenior",
+  "seniority.senior": "Senior",
+  "seniority.lead": "Lead",
+  "seniority.manager": "Manager",
+  "seniority.expert": "Expert",
+  "seniority.technicallead": "Technical Lead",
+  "seniority.seniormanager": "Senior Manager",
+  "seniority.director": "Director",
+
+  "tier.gold": "Gold",
+  "tier.silver": "Silver",
+  "tier.bronze": "Bronze"
 }

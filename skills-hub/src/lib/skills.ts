@@ -3,6 +3,7 @@ import path from "path";
 import { remark } from "remark";
 import remarkHtml from "remark-html";
 import { Redis } from "@upstash/redis";
+import { getAllRatings, type SkillRatings } from "@/lib/ratings";
 
 export type Skill = {
   slug: string;
@@ -18,6 +19,7 @@ export type Skill = {
   readme: string;
   skillMd: string;
   installPrompt: string;
+  ratings?: SkillRatings;
 };
 
 type SkillMeta = Omit<Skill, "slug" | "readme" | "skillMd" | "installPrompt">;
@@ -50,9 +52,10 @@ export async function getAllSkills(): Promise<Skill[]> {
     fs.statSync(path.join(SKILLS_DIR, f)).isDirectory()
   );
 
-  // Batch-fetch all KV overrides
+  // Batch-fetch all KV overrides and ratings
   const kv = getKv();
   const overrides = new Map<string, Partial<SkillMeta>>();
+  let allRatingsMap: Record<string, SkillRatings> = {};
   if (kv) {
     try {
       const keys = slugs.map((s) => `skill:${s}:meta`);
@@ -62,6 +65,11 @@ export async function getAllSkills(): Promise<Skill[]> {
       });
     } catch {
       // KV unavailable — fall back to filesystem only
+    }
+    try {
+      allRatingsMap = await getAllRatings();
+    } catch {
+      // Ratings unavailable — continue without
     }
   }
 
@@ -98,7 +106,8 @@ export async function getAllSkills(): Promise<Skill[]> {
 
       const installPrompt = buildInstallPrompt(slug, skillFiles);
 
-      return { slug, ...merged, readme, skillMd, installPrompt } as Skill;
+      const ratings = allRatingsMap[slug];
+      return { slug, ...merged, readme, skillMd, installPrompt, ratings } as Skill;
     })
     .filter(Boolean) as Skill[];
 }

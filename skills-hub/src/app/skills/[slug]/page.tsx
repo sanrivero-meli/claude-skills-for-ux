@@ -1,7 +1,9 @@
 import { getAllSkills, getSkillBySlug, parseReadmeSections } from "@/lib/skills";
+import { getSkillRatings } from "@/lib/ratings";
 import { notFound } from "next/navigation";
 import { InstallSnippet } from "@/components/InstallSnippet";
 import { EditableSkillMeta } from "@/components/EditableSkillMeta";
+import { RatingForm } from "@/components/RatingForm";
 import { AdminLoginButton } from "@/components/AdminLoginButton";
 import { ReadmeSections } from "@/components/ReadmeSections";
 import { BackLink } from "@/components/BackLink";
@@ -24,6 +26,8 @@ export default async function SkillPage({
     ? await parseReadmeSections(skill.readme)
     : [];
 
+  const ratings = await getSkillRatings(slug);
+
   return (
     <main className="min-h-screen bg-zinc-950 text-zinc-50 px-6 py-16">
       <div className="max-w-2xl mx-auto">
@@ -35,6 +39,12 @@ export default async function SkillPage({
 
         {/* Editable metadata + expandable README sections */}
         <EditableSkillMeta skill={skill} />
+
+        {/* Rating section */}
+        <div className="mb-8 rounded-xl border border-zinc-800 bg-zinc-900/30 p-5">
+          <RatingForm slug={slug} initialRatings={ratings} />
+        </div>
+
         <ReadmeSections sections={sections} />
 
         {/* Install */}
