@@ -1,0 +1,13 @@
+{
+  "name": "Behavioral UX",
+  "description": "Analiza diseños, pantallas y flujos desde behavioral design y psicología cognitiva. Detecta principios aplicables y entrega recomendaciones accionables.\n",
+  "author": "community",
+  "category": "Community",
+  "tags": [],
+  "platform": [
+    "claude-code"
+  ],
+  "requires": [],
+  "version": "1.0.0",
+  "createdAt": "2026-03-02"
+}
