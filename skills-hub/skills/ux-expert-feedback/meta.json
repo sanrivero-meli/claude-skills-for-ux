@@ -1,0 +1,13 @@
+{
+  "name": "UX Expert Feedback",
+  "description": "Gives senior UX feedback grounded in usability heuristics, Gestalt laws, accessibility (WCAG), IA, and UX writing. Integrates Mercado Pago brand voice (tone, personality, CX thermometer). Outputs prioritized, actionable recommendations.",
+  "author": "community",
+  "category": "Community",
+  "tags": [],
+  "platform": [
+    "claude-code"
+  ],
+  "requires": [],
+  "version": "1.0.0",
+  "createdAt": "2026-03-02"
+}
