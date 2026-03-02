@@ -1,0 +1,13 @@
+{
+  "name": "Create User Flow",
+  "description": "Crea, diagnostica y documenta user flows con supuestos UX integrados. Output en Mermaid.js para FigJam via Figma MCP.\n",
+  "author": "community",
+  "category": "Community",
+  "tags": [],
+  "platform": [
+    "claude-code"
+  ],
+  "requires": [],
+  "version": "1.0.0",
+  "createdAt": "2026-03-02"
+}
