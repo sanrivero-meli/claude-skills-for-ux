@@ -1,0 +1,13 @@
+{
+  "name": "Ideação (imaginar, etapa 2)",
+  "description": "Gera o maior volume possível de ideias diversas sem julgamento, sendo um parceiro criativo ativo que combina, ressignifica e provoca novas direções ancoradas no problem frame.\n",
+  "author": "community",
+  "category": "Community",
+  "tags": [],
+  "platform": [
+    "claude-code"
+  ],
+  "requires": [],
+  "version": "1.0.0",
+  "createdAt": "2026-03-03"
+}
