@@ -1,0 +1,13 @@
+{
+  "name": "Definição do usuário foco (entender, etapa 3)",
+  "description": "Define com clareza quem é o usuário foco a partir dos dados do discovery — não uma persona fictícia, mas um recorte real baseado em comportamento, demografia e motivação.\n",
+  "author": "community",
+  "category": "Community",
+  "tags": [],
+  "platform": [
+    "claude-code"
+  ],
+  "requires": [],
+  "version": "1.0.0",
+  "createdAt": "2026-03-03"
+}
