@@ -1,0 +1,13 @@
+{
+  "name": "Fundação visual (projetar, etapa 1)",
+  "description": "Define a tipologia de experiência (Funcional, Balanceado ou Expressivo) e deriva os princípios de design que guiarão o Projetar — saindo com critério claro, não com estética.\n",
+  "author": "community",
+  "category": "Community",
+  "tags": [],
+  "platform": [
+    "claude-code"
+  ],
+  "requires": [],
+  "version": "1.0.0",
+  "createdAt": "2026-03-03"
+}
