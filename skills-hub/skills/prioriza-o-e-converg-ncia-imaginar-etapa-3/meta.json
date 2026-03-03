@@ -1,0 +1,13 @@
+{
+  "name": "Priorização e convergência (imaginar, etapa 3)",
+  "description": "Prioriza as ideias geradas com critérios claros, converge para candidate features e sai com total certeza sobre o que será desenhado — sem mais questionamentos.\n",
+  "author": "community",
+  "category": "Community",
+  "tags": [],
+  "platform": [
+    "claude-code"
+  ],
+  "requires": [],
+  "version": "1.0.0",
+  "createdAt": "2026-03-03"
+}
