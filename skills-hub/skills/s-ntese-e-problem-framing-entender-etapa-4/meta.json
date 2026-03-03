@@ -1,0 +1,13 @@
+{
+  "name": "Síntese e problem framing (entender, etapa 4)",
+  "description": "Sintetiza tudo que foi descoberto nas etapas anteriores em um problem frame sólido — com a dor principal declarada, o impacto mapeado e a priorização justificada antes de entrar no Imaginar.\n",
+  "author": "community",
+  "category": "Community",
+  "tags": [],
+  "platform": [
+    "claude-code"
+  ],
+  "requires": [],
+  "version": "1.0.0",
+  "createdAt": "2026-03-03"
+}
