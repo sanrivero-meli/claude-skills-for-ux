@@ -1,0 +1,13 @@
+{
+  "name": "Vision statement (imaginar, etapa 4)",
+  "description": "Sintetiza tudo que foi construído nas etapas anteriores em 2 a 3 product visionings distintos, cada um com seu vision statement e candidate features associadas para guiar o Projetar.\n",
+  "author": "community",
+  "category": "Community",
+  "tags": [],
+  "platform": [
+    "claude-code"
+  ],
+  "requires": [],
+  "version": "1.0.0",
+  "createdAt": "2026-03-03"
+}
