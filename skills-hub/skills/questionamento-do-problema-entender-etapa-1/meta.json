@@ -1,0 +1,13 @@
+{
+  "name": "Questionamento do problema (entender, etapa 1)",
+  "description": "Questiona a hipótese de problema trazida pelo time, identificando se estamos resolvendo o problema certo antes de avançar para discovery.\n",
+  "author": "community",
+  "category": "Community",
+  "tags": [],
+  "platform": [
+    "claude-code"
+  ],
+  "requires": [],
+  "version": "1.0.0",
+  "createdAt": "2026-03-03"
+}
