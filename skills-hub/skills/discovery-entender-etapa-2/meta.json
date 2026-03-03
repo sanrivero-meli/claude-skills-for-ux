@@ -1,0 +1,13 @@
+{
+  "name": "Discovery (entender, etapa 2)",
+  "description": "Estrutura o que já se sabe sobre o problema, mapeia o que falta descobrir e conduz a descoberta que corrobora ou derruba a hipótese de dor com dados e insights.\n",
+  "author": "community",
+  "category": "Community",
+  "tags": [],
+  "platform": [
+    "claude-code"
+  ],
+  "requires": [],
+  "version": "1.0.0",
+  "createdAt": "2026-03-03"
+}
