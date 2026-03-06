@@ -1,0 +1,10 @@
+{
+  "name": "rapid-prototype",
+  "description": "Generates fast React prototypes to validate concepts, ideas, flows, interactions.",
+  "commands": {
+    "rapid-prototype": {
+      "description": "Generates fast React prototypes to validate concepts, ideas, flows, interactions.",
+      "skill": "./SKILL.md"
+    }
+  }
+}

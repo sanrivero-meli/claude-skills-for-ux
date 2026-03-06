@@ -1,0 +1,10 @@
+{
+  "name": "disseca-o-tem-tica-imaginar-etapa-1",
+  "description": "Quebra o problem frame em múltiplas dimensões temáticas antes de divergir, garantindo que a ideação seja rica e não enviesada por um único ângulo do problema.",
+  "commands": {
+    "disseca-o-tem-tica-imaginar-etapa-1": {
+      "description": "Quebra o problem frame em múltiplas dimensões temáticas antes de divergir, garantindo que a ideação seja rica e não enviesada por um único ângulo do problema.",
+      "skill": "./SKILL.md"
+    }
+  }
+}

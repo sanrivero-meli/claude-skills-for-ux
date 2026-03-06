@@ -1,0 +1,10 @@
+{
+  "name": "funda-o-visual-projetar-etapa-1",
+  "description": "Define a tipologia de experiência (Funcional, Balanceado ou Expressivo) e deriva os princípios de design que guiarão o Projetar — saindo com critério claro, não com estética.",
+  "commands": {
+    "funda-o-visual-projetar-etapa-1": {
+      "description": "Define a tipologia de experiência (Funcional, Balanceado ou Expressivo) e deriva os princípios de design que guiarão o Projetar — saindo com critério claro, não com estética.",
+      "skill": "./SKILL.md"
+    }
+  }
+}

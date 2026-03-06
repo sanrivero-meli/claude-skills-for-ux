@@ -1,0 +1,10 @@
+{
+  "name": "mercado-pago-voice",
+  "description": "Write and review content following Mercado Pago's brand voice. UX copy, marketing, CX.",
+  "commands": {
+    "mercado-pago-voice": {
+      "description": "Write and review content following Mercado Pago's brand voice. UX copy, marketing, CX.",
+      "skill": "./SKILL.md"
+    }
+  }
+}

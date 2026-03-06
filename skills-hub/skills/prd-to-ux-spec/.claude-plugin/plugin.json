@@ -1,0 +1,10 @@
+{
+  "name": "prd-to-ux-spec",
+  "description": "Analiza un PRD y genera una UX Functional Spec completa siguiendo la metodología Spec-Driven Design (SDD) v4.2. Usar cuando un analista necesita convertir un PRD en documentación UX estructurada con proto-personas, user flows, supuestos y edge cases.",
+  "commands": {
+    "prd-to-ux-spec": {
+      "description": "Analiza un PRD y genera una UX Functional Spec completa siguiendo la metodología Spec-Driven Design (SDD) v4.2. Usar cuando un analista necesita convertir un PRD en documentación UX estructurada con proto-personas, user flows, supuestos y edge cases.",
+      "skill": "./SKILL.md"
+    }
+  }
+}

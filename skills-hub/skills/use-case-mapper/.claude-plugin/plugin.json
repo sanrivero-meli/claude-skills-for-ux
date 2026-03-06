@@ -1,0 +1,10 @@
+{
+  "name": "use-case-mapper",
+  "description": "Maps any feature into happy, error, and edge cases. Creates flowchart in Figjam.",
+  "commands": {
+    "use-case-mapper": {
+      "description": "Maps any feature into happy, error, and edge cases. Creates flowchart in Figjam.",
+      "skill": "./SKILL.md"
+    }
+  }
+}

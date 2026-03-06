@@ -1,0 +1,10 @@
+{
+  "name": "behavioral-ux",
+  "description": "Analiza diseños, pantallas y flujos desde behavioral design y psicología cognitiva. Detecta principios aplicables y entrega recomendaciones accionables.",
+  "commands": {
+    "behavioral-ux": {
+      "description": "Analiza diseños, pantallas y flujos desde behavioral design y psicología cognitiva. Detecta principios aplicables y entrega recomendaciones accionables.",
+      "skill": "./SKILL.md"
+    }
+  }
+}

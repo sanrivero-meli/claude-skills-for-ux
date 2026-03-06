@@ -1,0 +1,10 @@
+{
+  "name": "questionamento-do-problema-entender-etapa-1",
+  "description": "Questiona a hipótese de problema trazida pelo time, identificando se estamos resolvendo o problema certo antes de avançar para discovery.",
+  "commands": {
+    "questionamento-do-problema-entender-etapa-1": {
+      "description": "Questiona a hipótese de problema trazida pelo time, identificando se estamos resolvendo o problema certo antes de avançar para discovery.",
+      "skill": "./SKILL.md"
+    }
+  }
+}
