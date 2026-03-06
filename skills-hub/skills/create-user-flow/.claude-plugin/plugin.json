@@ -1,10 +1,5 @@
 {
   "name": "create-user-flow",
   "description": "Crea, diagnostica y documenta user flows con supuestos UX integrados. Output en Mermaid.js para FigJam via Figma MCP.",
-  "commands": {
-    "create-user-flow": {
-      "description": "Crea, diagnostica y documenta user flows con supuestos UX integrados. Output en Mermaid.js para FigJam via Figma MCP.",
-      "skill": "./SKILL.md"
-    }
-  }
+  "version": "1.0.0"
 }

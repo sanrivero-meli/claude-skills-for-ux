@@ -1,10 +1,5 @@
 {
   "name": "prioriza-o-e-converg-ncia-imaginar-etapa-3",
   "description": "Prioriza as ideias geradas com critérios claros, converge para candidate features e sai com total certeza sobre o que será desenhado — sem mais questionamentos.",
-  "commands": {
-    "prioriza-o-e-converg-ncia-imaginar-etapa-3": {
-      "description": "Prioriza as ideias geradas com critérios claros, converge para candidate features e sai com total certeza sobre o que será desenhado — sem mais questionamentos.",
-      "skill": "./SKILL.md"
-    }
-  }
+  "version": "1.0.0"
 }

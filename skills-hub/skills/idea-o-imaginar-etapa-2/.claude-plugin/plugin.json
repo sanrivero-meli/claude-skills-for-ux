@@ -1,10 +1,5 @@
 {
   "name": "idea-o-imaginar-etapa-2",
   "description": "Gera o maior volume possível de ideias diversas sem julgamento, sendo um parceiro criativo ativo que combina, ressignifica e provoca novas direções ancoradas no problem frame.",
-  "commands": {
-    "idea-o-imaginar-etapa-2": {
-      "description": "Gera o maior volume possível de ideias diversas sem julgamento, sendo um parceiro criativo ativo que combina, ressignifica e provoca novas direções ancoradas no problem frame.",
-      "skill": "./SKILL.md"
-    }
-  }
+  "version": "1.0.0"
 }

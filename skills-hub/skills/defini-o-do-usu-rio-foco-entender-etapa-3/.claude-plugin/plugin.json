@@ -1,10 +1,5 @@
 {
   "name": "defini-o-do-usu-rio-foco-entender-etapa-3",
   "description": "Define com clareza quem é o usuário foco a partir dos dados do discovery — não uma persona fictícia, mas um recorte real baseado em comportamento, demografia e motivação.",
-  "commands": {
-    "defini-o-do-usu-rio-foco-entender-etapa-3": {
-      "description": "Define com clareza quem é o usuário foco a partir dos dados do discovery — não uma persona fictícia, mas um recorte real baseado em comportamento, demografia e motivação.",
-      "skill": "./SKILL.md"
-    }
-  }
+  "version": "1.0.0"
 }

@@ -1,10 +1,5 @@
 {
   "name": "brief-generator",
   "description": "Generates complete, session-ready UX/product design briefs from raw input — especially voice notes and transcripts.",
-  "commands": {
-    "brief-generator": {
-      "description": "Generates complete, session-ready UX/product design briefs from raw input — especially voice notes and transcripts.",
-      "skill": "./SKILL.md"
-    }
-  }
+  "version": "1.0.0"
 }
