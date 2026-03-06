@@ -5,13 +5,12 @@
   },
   "metadata": {
     "description": "UX Fintech design skills for Claude Code",
-    "version": "1.0.0",
-    "pluginRoot": "skills-hub/skills"
+    "version": "1.0.0"
   },
   "plugins": [
     {
       "name": "behavioral-ux",
-      "source": "behavioral-ux",
+      "source": "./skills-hub/skills/behavioral-ux",
       "description": "Analiza diseños, pantallas y flujos desde behavioral design y psicología cognitiva. Detecta principios aplicables y entrega recomendaciones accionables.",
       "version": "1.0.0",
       "category": "Product Design",
@@ -19,7 +18,7 @@
     },
     {
       "name": "brief-generator",
-      "source": "brief-generator",
+      "source": "./skills-hub/skills/brief-generator",
       "description": "Generates complete, session-ready UX/product design briefs from raw input — especially voice notes and transcripts.",
       "version": "1.0.0",
       "category": "Product Design",
@@ -33,7 +32,7 @@
     },
     {
       "name": "create-user-flow",
-      "source": "create-user-flow",
+      "source": "./skills-hub/skills/create-user-flow",
       "description": "Crea, diagnostica y documenta user flows con supuestos UX integrados. Output en Mermaid.js para FigJam via Figma MCP.",
       "version": "1.0.0",
       "category": "Product Design",
@@ -41,7 +40,7 @@
     },
     {
       "name": "defini-o-do-usu-rio-foco-entender-etapa-3",
-      "source": "defini-o-do-usu-rio-foco-entender-etapa-3",
+      "source": "./skills-hub/skills/defini-o-do-usu-rio-foco-entender-etapa-3",
       "description": "Define com clareza quem é o usuário foco a partir dos dados do discovery — não uma persona fictícia, mas um recorte real baseado em comportamento, demografia e motivação.",
       "version": "1.0.0",
       "category": "Product Design",
@@ -49,7 +48,7 @@
     },
     {
       "name": "discovery-entender-etapa-2",
-      "source": "discovery-entender-etapa-2",
+      "source": "./skills-hub/skills/discovery-entender-etapa-2",
       "description": "Estrutura o que já se sabe sobre o problema, mapeia o que falta descobrir e conduz a descoberta que corrobora ou derruba a hipótese de dor com dados e insights.",
       "version": "1.0.0",
       "category": "Product Design",
@@ -57,7 +56,7 @@
     },
     {
       "name": "disseca-o-tem-tica-imaginar-etapa-1",
-      "source": "disseca-o-tem-tica-imaginar-etapa-1",
+      "source": "./skills-hub/skills/disseca-o-tem-tica-imaginar-etapa-1",
       "description": "Quebra o problem frame em múltiplas dimensões temáticas antes de divergir, garantindo que a ideação seja rica e não enviesada por um único ângulo do problema.",
       "version": "1.0.0",
       "category": "Product Design",
@@ -65,7 +64,7 @@
     },
     {
       "name": "funda-o-visual-projetar-etapa-1",
-      "source": "funda-o-visual-projetar-etapa-1",
+      "source": "./skills-hub/skills/funda-o-visual-projetar-etapa-1",
       "description": "Define a tipologia de experiência (Funcional, Balanceado ou Expressivo) e deriva os princípios de design que guiarão o Projetar — saindo com critério claro, não com estética.",
       "version": "1.0.0",
       "category": "Visual Design",
@@ -73,7 +72,7 @@
     },
     {
       "name": "idea-o-imaginar-etapa-2",
-      "source": "idea-o-imaginar-etapa-2",
+      "source": "./skills-hub/skills/idea-o-imaginar-etapa-2",
       "description": "Gera o maior volume possível de ideias diversas sem julgamento, sendo um parceiro criativo ativo que combina, ressignifica e provoca novas direções ancoradas no problem frame.",
       "version": "1.0.0",
       "category": "Product Design",
@@ -81,7 +80,7 @@
     },
     {
       "name": "mercado-pago-voice",
-      "source": "mercado-pago-voice",
+      "source": "./skills-hub/skills/mercado-pago-voice",
       "description": "Write and review content following Mercado Pago's brand voice. UX copy, marketing, CX.",
       "version": "1.0.0",
       "category": "Content ",
@@ -89,7 +88,7 @@
     },
     {
       "name": "prd-to-ux-spec",
-      "source": "prd-to-ux-spec",
+      "source": "./skills-hub/skills/prd-to-ux-spec",
       "description": "Analiza un PRD y genera una UX Functional Spec completa siguiendo la metodología Spec-Driven Design (SDD) v4.2. Usar cuando un analista necesita convertir un PRD en documentación UX estructurada con proto-personas, user flows, supuestos y edge cases.",
       "version": "1.0.0",
       "category": "Product Design",
@@ -97,7 +96,7 @@
     },
     {
       "name": "prioriza-o-e-converg-ncia-imaginar-etapa-3",
-      "source": "prioriza-o-e-converg-ncia-imaginar-etapa-3",
+      "source": "./skills-hub/skills/prioriza-o-e-converg-ncia-imaginar-etapa-3",
       "description": "Prioriza as ideias geradas com critérios claros, converge para candidate features e sai com total certeza sobre o que será desenhado — sem mais questionamentos.",
       "version": "1.0.0",
       "category": "Product Design",
@@ -105,7 +104,7 @@
     },
     {
       "name": "questionamento-do-problema-entender-etapa-1",
-      "source": "questionamento-do-problema-entender-etapa-1",
+      "source": "./skills-hub/skills/questionamento-do-problema-entender-etapa-1",
       "description": "Questiona a hipótese de problema trazida pelo time, identificando se estamos resolvendo o problema certo antes de avançar para discovery.",
       "version": "1.0.0",
       "category": "Product Design",
@@ -113,7 +112,7 @@
     },
     {
       "name": "rapid-prototype",
-      "source": "rapid-prototype",
+      "source": "./skills-hub/skills/rapid-prototype",
       "description": "Generates fast React prototypes to validate concepts, ideas, flows, interactions.",
       "version": "1.0.0",
       "category": "Visual Design",
@@ -126,7 +125,7 @@
     },
     {
       "name": "s-ntese-e-problem-framing-entender-etapa-4",
-      "source": "s-ntese-e-problem-framing-entender-etapa-4",
+      "source": "./skills-hub/skills/s-ntese-e-problem-framing-entender-etapa-4",
       "description": "Sintetiza tudo que foi descoberto nas etapas anteriores em um problem frame sólido — com a dor principal declarada, o impacto mapeado e a priorização justificada antes de entrar no Imaginar.",
       "version": "1.0.0",
       "category": "Product Design",
@@ -134,7 +133,7 @@
     },
     {
       "name": "use-case-mapper",
-      "source": "use-case-mapper",
+      "source": "./skills-hub/skills/use-case-mapper",
       "description": "Maps any feature into happy, error, and edge cases. Creates flowchart in Figjam.",
       "version": "1.0.0",
       "category": "Product Design",
@@ -147,7 +146,7 @@
     },
     {
       "name": "ux-expert-feedback",
-      "source": "ux-expert-feedback",
+      "source": "./skills-hub/skills/ux-expert-feedback",
       "description": "Gives senior UX feedback grounded in usability heuristics, Gestalt laws, accessibility (WCAG), IA, and UX writing. Integrates Mercado Pago brand voice (tone, personality, CX thermometer). Outputs prioritized, actionable recommendations.",
       "version": "1.0.0",
       "category": "Product Design",
@@ -155,7 +154,7 @@
     },
     {
       "name": "vision-statement-imaginar-etapa-4",
-      "source": "vision-statement-imaginar-etapa-4",
+      "source": "./skills-hub/skills/vision-statement-imaginar-etapa-4",
       "description": "Sintetiza tudo que foi construído nas etapas anteriores em 2 a 3 product visionings distintos, cada um com seu vision statement e candidate features associadas para guiar o Projetar.",
       "version": "1.0.0",
       "category": "Product Design",
